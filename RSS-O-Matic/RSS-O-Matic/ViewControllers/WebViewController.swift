@@ -1,5 +1,5 @@
 //
-//  CoveWebViewController.swift
+//  WebViewController.swift
 //  cove
 //
 //  Created by Ramiro Coll Doñetz on 2019-01-31.
@@ -9,7 +9,7 @@
 import UIKit
 import WebKit
 
-class CoveWebViewController: UIViewController, UIGestureRecognizerDelegate {
+class WebViewController: UIViewController, UIGestureRecognizerDelegate {
     
     static var animationDuration:Double = 0.3
     
@@ -43,8 +43,8 @@ class CoveWebViewController: UIViewController, UIGestureRecognizerDelegate {
         webView.removeObserver(self, forKeyPath: "estimatedProgress")
     }
     
-    class func createWebViewContainer(url: URL) -> CoveWebViewController{
-        let webViewController = CoveWebViewController(nibName: "CoveWebViewController", bundle: nil)
+    class func createWebViewContainer(url: URL) -> WebViewController{
+        let webViewController = WebViewController(nibName: "WebViewController", bundle: nil)
         webViewController.url = url
         return webViewController
     }
@@ -222,7 +222,7 @@ class CoveWebViewController: UIViewController, UIGestureRecognizerDelegate {
     }
     
     fileprivate func cancelInteractiveTransition() {
-        UIView.animate(withDuration: CoveWebViewController.animationDuration * 1.5, delay: 0, usingSpringWithDamping: 0.6, initialSpringVelocity: 0.3, options: .curveEaseInOut, animations: {
+        UIView.animate(withDuration: WebViewController.animationDuration * 1.5, delay: 0, usingSpringWithDamping: 0.6, initialSpringVelocity: 0.3, options: .curveEaseInOut, animations: {
             self.backgroundView.alpha = 1
             self.viewContainer.center = CGPoint(x: self.backgroundView.center.x, y:self.backgroundView.center.y)
         }) { (complete) in
@@ -231,7 +231,7 @@ class CoveWebViewController: UIViewController, UIGestureRecognizerDelegate {
     }
     
     func finishTransition(isInteractive: Bool) {
-        UIView.animate(withDuration: CoveWebViewController.animationDuration / 2.0, delay: 0.0, options: .curveEaseInOut, animations: {
+        UIView.animate(withDuration: WebViewController.animationDuration / 2.0, delay: 0.0, options: .curveEaseInOut, animations: {
             self.backgroundView.alpha = 0
         }, completion: { (complete) in
             if complete{
@@ -239,7 +239,7 @@ class CoveWebViewController: UIViewController, UIGestureRecognizerDelegate {
             }
         })
         
-        UIView.animate(withDuration: CoveWebViewController.animationDuration * (isInteractive ? 1.5 : 3.0), delay: isInteractive ? 0 : CoveWebViewController.animationDuration / 3.0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0.3, options: .curveEaseInOut, animations: {
+        UIView.animate(withDuration: WebViewController.animationDuration * (isInteractive ? 1.5 : 3.0), delay: isInteractive ? 0 : WebViewController.animationDuration / 3.0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0.3, options: .curveEaseInOut, animations: {
             self.viewContainer.center = CGPoint(x: self.backgroundView.center.x, y:self.backgroundView.center.y + self.viewContainer.bounds.size.height)
         }) { (complete) in
             if complete {
@@ -252,7 +252,7 @@ class CoveWebViewController: UIViewController, UIGestureRecognizerDelegate {
     fileprivate func initialAnimation() {
         self.backgroundView.alpha = 0
         
-        UIView.animate(withDuration: CoveWebViewController.animationDuration / 2.0, delay: 0.0, options: .curveEaseInOut, animations: {
+        UIView.animate(withDuration: WebViewController.animationDuration / 2.0, delay: 0.0, options: .curveEaseInOut, animations: {
             self.backgroundView.alpha = 1
         }, completion: { (complete) in
             if complete{
@@ -262,7 +262,7 @@ class CoveWebViewController: UIViewController, UIGestureRecognizerDelegate {
         
         viewContainer.center = CGPoint(x: self.backgroundView.center.x, y:self.backgroundView.center.y + viewContainer.bounds.size.height)
         
-        UIView.animate(withDuration: CoveWebViewController.animationDuration * 1.5, delay: CoveWebViewController.animationDuration / 3.0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0.3, options: .curveEaseInOut, animations: {
+        UIView.animate(withDuration: WebViewController.animationDuration * 1.5, delay: WebViewController.animationDuration / 3.0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0.3, options: .curveEaseInOut, animations: {
             self.viewContainer.center = CGPoint(x: self.backgroundView.center.x, y:self.backgroundView.center.y)
         }) { (complete) in
             
@@ -270,7 +270,7 @@ class CoveWebViewController: UIViewController, UIGestureRecognizerDelegate {
     }
 }
 
-extension CoveWebViewController: WKNavigationDelegate {
+extension WebViewController: WKNavigationDelegate {
     
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
         self.hideProgressView()

@@ -13,16 +13,18 @@ enum APIRouter: URLRequestConvertible {
     case login(username:String, password:String)
     case register(username:String, password:String)
     case feeds
+    case removeFeed(feedId: Int)
     case articles(feedId: Int)
-    case article(id: Int)
     
     // MARK: - HTTPMethod
     private var method: HTTPMethod {
         switch self {
         case .login, .register:
             return .post
-        case .feeds, .articles, .article:
+        case .feeds, .articles:
             return .get
+        case .removeFeed:
+            return .delete
         }
     }
     
@@ -35,10 +37,10 @@ enum APIRouter: URLRequestConvertible {
             return "/users/register"
         case .feeds:
             return "/feeds"
+        case .removeFeed(let feedId):
+            return "/feeds/\(feedId)"
         case .articles(let feedId):
-            return "feeds/\(feedId)/articles"
-        case .article(let id):
-            return "/article/\(id)"
+            return "/feeds/\(feedId)/articles"
         }
     }
     
@@ -49,7 +51,7 @@ enum APIRouter: URLRequestConvertible {
             return [K.APIParameterKey.username: email, K.APIParameterKey.password: password]
         case .register(let email, let password):
             return [K.APIParameterKey.username: email, K.APIParameterKey.password: password]
-        case .feeds, .articles, .article:
+        case .feeds, .articles, .removeFeed:
             return nil
         }
     }

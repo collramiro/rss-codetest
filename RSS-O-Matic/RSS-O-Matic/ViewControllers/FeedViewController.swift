@@ -50,7 +50,7 @@ class FeedViewController: BaseViewController, UITableViewDelegate, UITableViewDa
         tableView.deselectRow(at: indexPath, animated: true)
         
         let article = articles[indexPath.row]
-        let webView = CoveWebViewController.createWebViewContainer(url: URL.init(string: article.url)!)
+        let webView = WebViewController.createWebViewContainer(url: URL.init(string: article.url)!)
         webView.modalPresentationStyle = .overCurrentContext
         self.present(webView, animated: false, completion: nil)
     }

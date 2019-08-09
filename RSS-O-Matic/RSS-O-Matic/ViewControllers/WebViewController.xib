@@ -14,7 +14,7 @@
         </array>
     </customFonts>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CoveWebViewController" customModule="RSS_O_Matic" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="WebViewController" customModule="RSS_O_Matic" customModuleProvider="target">
             <connections>
                 <outlet property="activityIndicator" destination="uhT-Wf-OQO" id="fG3-n3-APk"/>
                 <outlet property="backgroundView" destination="nRN-yg-awP" id="6Bp-dH-jwD"/>

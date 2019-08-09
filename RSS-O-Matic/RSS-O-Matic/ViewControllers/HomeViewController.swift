@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import SVProgressHUD
 
-class HomeViewController: BaseViewController, UITableViewDelegate, UITableViewDataSource {
+class HomeViewController: BaseViewController {
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -32,28 +33,38 @@ class HomeViewController: BaseViewController, UITableViewDelegate, UITableViewDa
                 print(error.localizedDescription)
             }
         }
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        var cell = tableView.dequeueReusableCell(withIdentifier: "cell") as UITableViewCell?
         
-        if cell == nil {
-            cell = UITableViewCell(style: .default, reuseIdentifier: "cell")
-        }
-        
-        cell!.textLabel?.text = feeds[indexPath.row].title
-        return cell!
+        setupUI()
     }
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return feeds.count
+    private func setupUI() {
+        let editButton = UIBarButtonItem(title: "Edit", style: .plain, target: self, action: #selector(toggleEditing)) // create a bat button
+        navigationItem.leftBarButtonItem = editButton // assign button
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
+    @objc private func toggleEditing() {
+        tableView.setEditing(!tableView.isEditing, animated: true) // Set opposite value of current editing status
+        navigationItem.leftBarButtonItem?.title = tableView.isEditing ? "Done" : "Edit" // Set title depending on the editing status
+    }
+    
+    // MARK: - Endpoint Connection
+    private func removeFeed(indexPath: IndexPath) {
+        SVProgressHUD.show()
         
         let feed = feeds[indexPath.row]
-        performSegue(withIdentifier: "goToFeed", sender: feed)
+
+        APIClient.removeFeed(feedId: feed.feedId) { (result) in
+            switch result {
+            case .success:
+                SVProgressHUD.dismiss()
+                self.feeds.remove(at: indexPath.row)
+                self.tableView.deleteRows(at: [indexPath], with: .fade)
+            case .failure(let error):
+                print(error.localizedDescription)
+                SVProgressHUD.dismiss()
+                self.showErrorAlert(title: "Error", message: "Something when wrong trying to remove the feed from your list. Please try again.")
+            }
+        }
     }
     
     // MARK: - Logout
@@ -90,7 +101,11 @@ class HomeViewController: BaseViewController, UITableViewDelegate, UITableViewDa
             self.performSegue(withIdentifier: "goToAddFeed", sender: self)
         }))
         
-        alert.addAction(UIAlertAction(title: "Logout", style: .default , handler:{ (UIAlertAction)in
+        alert.addAction(UIAlertAction(title: "Edit Feeds", style: .default , handler:{ (UIAlertAction)in
+            self.performSegue(withIdentifier: "goToAddFeed", sender: self)
+        }))
+        
+        alert.addAction(UIAlertAction(title: "Logout", style: .destructive , handler:{ (UIAlertAction)in
             //logout user and go back to onboarding
             self.logout()
         }))
@@ -111,6 +126,38 @@ class HomeViewController: BaseViewController, UITableViewDelegate, UITableViewDa
             if let feed = sender as? Feed {
                 vc?.feed = feed
             }
+        }
+    }
+}
+
+// MARK: - Tableview Management
+extension HomeViewController : UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        var cell = tableView.dequeueReusableCell(withIdentifier: "cell") as UITableViewCell?
+        
+        if cell == nil {
+            cell = UITableViewCell(style: .default, reuseIdentifier: "cell")
+        }
+        
+        cell!.textLabel?.text = feeds[indexPath.row].title
+        return cell!
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return feeds.count
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        
+        let feed = feeds[indexPath.row]
+        performSegue(withIdentifier: "goToFeed", sender: feed)
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            // Delete the row from the data source
+            removeFeed(indexPath: indexPath)
         }
     }
 }

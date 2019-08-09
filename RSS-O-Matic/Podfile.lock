@@ -4,23 +4,27 @@ PODS:
   - SDWebImage (5.0.6):
     - SDWebImage/Core (= 5.0.6)
   - SDWebImage/Core (5.0.6)
+  - SVProgressHUD (2.2.5)
 
 DEPENDENCIES:
   - Alamofire (~> 5.0.0-beta.5)
   - IHKeyboardAvoiding
   - SDWebImage (~> 5.0)
+  - SVProgressHUD
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - Alamofire
     - IHKeyboardAvoiding
     - SDWebImage
+    - SVProgressHUD
 
 SPEC CHECKSUMS:
   Alamofire: bd07938ceecad59d2492aeecb1f785a8f2721160
   IHKeyboardAvoiding: 4cae0880c3975feffa278495df894c5166e71ad0
   SDWebImage: 920f1a2ff1ca8296ad34f6e0510a1ef1d70ac965
+  SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
 
-PODFILE CHECKSUM: de9107ff0028491908b98e7a364b39b1a20cf1a0
+PODFILE CHECKSUM: 01f6ba09c25b7f48cf04a35ee28a74a9979c542d
 
 COCOAPODS: 1.7.5

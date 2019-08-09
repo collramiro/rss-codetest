@@ -10,5 +10,6 @@ target 'RSS-O-Matic' do
   pod 'Alamofire', '~> 5.0.0-beta.5'
   pod 'SDWebImage', '~> 5.0'
   pod 'IHKeyboardAvoiding'
+  pod 'SVProgressHUD'
 
 end
