@@ -4,10 +4,10 @@ Until now I spent 8hs between reading the API, designing the storyboard on paper
 
 ![](/paperstoryboard.jpg)
 
-Instructions:
+# Instructions
 - To run the project you need to do a pod install at the project folder first.
 
-Current functionalities:
+# Current functionalities
 - Login/Register 
   - The app stores the user, so if you kill the app and reopen, you'll be logged in. Anyway this need improvements to avoid expiration of authtoken.
 - Home includes:
@@ -20,7 +20,7 @@ Current functionalities:
   - I did this for a previous project, is a custom implementation of a webview with nice UI for showing loading progress and swipe for dismissing. It's super easy to add back/forward/refresh actions. It's a clone from Facebook InApp WebView.
   
 
-Important Pendings:
+# Important Pendings
 - Manage authtoken expiration
 - Manage no internet connection in a better way
 - Implement refresh feed
