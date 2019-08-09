@@ -38,8 +38,8 @@ class AuthViewController: BaseViewController {
             explanationLabel.text = "Welcome back! Enter your credentials to login and start using this amazing app 😉"
             submitButton.setTitle("Login", for: .normal)
             
-            usernameTextField.text = "ramiro_postman"
-            passwordTextField.text = "testpassword"
+//            usernameTextField.text = "ramiro_postman"
+//            passwordTextField.text = "testpassword"
         } else {
             explanationLabel.text = "Welcome! Enter your credentials to register and start using this amazing app 😉"
             submitButton.setTitle("Register", for: .normal)
