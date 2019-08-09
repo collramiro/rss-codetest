@@ -9,10 +9,6 @@
 import Foundation
 import UIKit
 
-//struct FeedList: Codable {
-//    let feeds: [Feed]
-//}
-
 struct Feed: Codable {
     let title: String
     let url: String

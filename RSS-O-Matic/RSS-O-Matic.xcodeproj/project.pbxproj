@@ -25,6 +25,11 @@
 		28F7302422FDF12F00E8B9F1 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F7302322FDF12F00E8B9F1 /* DataManager.swift */; };
 		28F7302722FDF8F900E8B9F1 /* AddFeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F7302622FDF8F900E8B9F1 /* AddFeedViewController.swift */; };
 		28F7302B22FE006300E8B9F1 /* FeedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F7302A22FE006300E8B9F1 /* FeedTableViewCell.swift */; };
+		28F7302D22FE04F300E8B9F1 /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F7302C22FE04F300E8B9F1 /* FeedViewController.swift */; };
+		28F7302F22FE053D00E8B9F1 /* Article.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F7302E22FE053D00E8B9F1 /* Article.swift */; };
+		28F7303222FE0AB000E8B9F1 /* CoveWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F7303022FE0AB000E8B9F1 /* CoveWebViewController.swift */; };
+		28F7303322FE0AB000E8B9F1 /* CoveWebViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 28F7303122FE0AB000E8B9F1 /* CoveWebViewController.xib */; };
+		28F7303522FE0D1000E8B9F1 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28F7303422FE0D1000E8B9F1 /* WebKit.framework */; };
 		2B2D8BC43A705CF19A74047A /* Pods_RSS_O_Matic.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AC2AD7849CDE6BF4C6FAD6E6 /* Pods_RSS_O_Matic.framework */; };
 /* End PBXBuildFile section */
 
@@ -49,6 +54,11 @@
 		28F7302322FDF12F00E8B9F1 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		28F7302622FDF8F900E8B9F1 /* AddFeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFeedViewController.swift; sourceTree = "<group>"; };
 		28F7302A22FE006300E8B9F1 /* FeedTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedTableViewCell.swift; sourceTree = "<group>"; };
+		28F7302C22FE04F300E8B9F1 /* FeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
+		28F7302E22FE053D00E8B9F1 /* Article.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Article.swift; sourceTree = "<group>"; };
+		28F7303022FE0AB000E8B9F1 /* CoveWebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoveWebViewController.swift; sourceTree = "<group>"; };
+		28F7303122FE0AB000E8B9F1 /* CoveWebViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CoveWebViewController.xib; sourceTree = "<group>"; };
+		28F7303422FE0D1000E8B9F1 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		3C13F80BB4CD71FC1A00F866 /* Pods-RSS-O-Matic.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RSS-O-Matic.debug.xcconfig"; path = "Target Support Files/Pods-RSS-O-Matic/Pods-RSS-O-Matic.debug.xcconfig"; sourceTree = "<group>"; };
 		AC2AD7849CDE6BF4C6FAD6E6 /* Pods_RSS_O_Matic.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RSS_O_Matic.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F052D2675122DF2577FF7032 /* Pods-RSS-O-Matic.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RSS-O-Matic.release.xcconfig"; path = "Target Support Files/Pods-RSS-O-Matic/Pods-RSS-O-Matic.release.xcconfig"; sourceTree = "<group>"; };
@@ -59,6 +69,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				28F7303522FE0D1000E8B9F1 /* WebKit.framework in Frameworks */,
 				2B2D8BC43A705CF19A74047A /* Pods_RSS_O_Matic.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -115,6 +126,7 @@
 			children = (
 				28F7301022FDC83100E8B9F1 /* User.swift */,
 				28F7300722FDC70300E8B9F1 /* Feed.swift */,
+				28F7302E22FE053D00E8B9F1 /* Article.swift */,
 				28F7300822FDC70300E8B9F1 /* DrinkDetails.swift */,
 			);
 			path = Models;
@@ -135,7 +147,10 @@
 				28F72FF122FDC50C00E8B9F1 /* OnboardingViewController.swift */,
 				28F7301422FDD7D200E8B9F1 /* AuthViewController.swift */,
 				28F7301F22FDEBA400E8B9F1 /* HomeViewController.swift */,
+				28F7302C22FE04F300E8B9F1 /* FeedViewController.swift */,
 				28F7302622FDF8F900E8B9F1 /* AddFeedViewController.swift */,
+				28F7303022FE0AB000E8B9F1 /* CoveWebViewController.swift */,
+				28F7303122FE0AB000E8B9F1 /* CoveWebViewController.xib */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -201,6 +216,7 @@
 		59149E10806B64F25CED6088 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				28F7303422FE0D1000E8B9F1 /* WebKit.framework */,
 				AC2AD7849CDE6BF4C6FAD6E6 /* Pods_RSS_O_Matic.framework */,
 			);
 			name = Frameworks;
@@ -276,6 +292,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				28F72FFA22FDC50D00E8B9F1 /* LaunchScreen.storyboard in Resources */,
+				28F7303322FE0AB000E8B9F1 /* CoveWebViewController.xib in Resources */,
 				28F72FF722FDC50D00E8B9F1 /* Assets.xcassets in Resources */,
 				28F72FF522FDC50C00E8B9F1 /* Onboarding.storyboard in Resources */,
 				28F7302222FDED0400E8B9F1 /* Main.storyboard in Resources */,
@@ -334,14 +351,17 @@
 				28F72FF222FDC50C00E8B9F1 /* OnboardingViewController.swift in Sources */,
 				28F7302422FDF12F00E8B9F1 /* DataManager.swift in Sources */,
 				28F7300522FDC6F400E8B9F1 /* APIRouter.swift in Sources */,
+				28F7303222FE0AB000E8B9F1 /* CoveWebViewController.swift in Sources */,
 				28F7301E22FDEB1E00E8B9F1 /* BaseViewController.swift in Sources */,
 				28F7301522FDD7D200E8B9F1 /* AuthViewController.swift in Sources */,
 				28F72FF022FDC50C00E8B9F1 /* AppDelegate.swift in Sources */,
 				28F7300A22FDC70300E8B9F1 /* DrinkDetails.swift in Sources */,
+				28F7302D22FE04F300E8B9F1 /* FeedViewController.swift in Sources */,
 				28F7300922FDC70300E8B9F1 /* Feed.swift in Sources */,
 				28F7302722FDF8F900E8B9F1 /* AddFeedViewController.swift in Sources */,
 				28F7302B22FE006300E8B9F1 /* FeedTableViewCell.swift in Sources */,
 				28F7302022FDEBA400E8B9F1 /* HomeViewController.swift in Sources */,
+				28F7302F22FE053D00E8B9F1 /* Article.swift in Sources */,
 				28F7300422FDC6F400E8B9F1 /* APIClient.swift in Sources */,
 				28F7301122FDC83100E8B9F1 /* User.swift in Sources */,
 				28F7301322FDD31200E8B9F1 /* Constants.swift in Sources */,

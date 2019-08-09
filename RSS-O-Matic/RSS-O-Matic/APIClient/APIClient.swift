@@ -27,8 +27,14 @@ class APIClient {
     
     static func getFeeds(completion:@escaping (AFResult<[Feed]>)->Void) {
         let jsonDecoder = JSONDecoder()
-//        jsonDecoder.dateDecodingStrategy = .formatted(.articleDateFormatter)
+        //        jsonDecoder.dateDecodingStrategy = .formatted(.articleDateFormatter)
         performRequest(route: APIRouter.feeds, decoder: jsonDecoder, completion: completion)
+    }
+    
+    static func getArticles(feedId: Int, completion:@escaping (AFResult<ArticleList>)->Void) {
+        let jsonDecoder = JSONDecoder()
+        //        jsonDecoder.dateDecodingStrategy = .formatted(.articleDateFormatter)
+        performRequest(route: APIRouter.articles(feedId: feedId), decoder: jsonDecoder, completion: completion)
     }
 
 //    static func getDrinks(completion:@escaping (AFResult<DrinkList>)->Void) {

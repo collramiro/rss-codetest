@@ -13,7 +13,7 @@ enum APIRouter: URLRequestConvertible {
     case login(username:String, password:String)
     case register(username:String, password:String)
     case feeds
-    case articles
+    case articles(feedId: Int)
     case article(id: Int)
     
     // MARK: - HTTPMethod
@@ -35,8 +35,8 @@ enum APIRouter: URLRequestConvertible {
             return "/users/register"
         case .feeds:
             return "/feeds"
-        case .articles:
-            return "/articles/all.json"
+        case .articles(let feedId):
+            return "feeds/\(feedId)/articles"
         case .article(let id):
             return "/article/\(id)"
         }

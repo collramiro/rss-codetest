@@ -53,6 +53,7 @@ class HomeViewController: BaseViewController, UITableViewDelegate, UITableViewDa
         tableView.deselectRow(at: indexPath, animated: true)
         
         let feed = feeds[indexPath.row]
+        performSegue(withIdentifier: "goToFeed", sender: feed)
     }
     
     // MARK: - Logout
@@ -101,14 +102,15 @@ class HomeViewController: BaseViewController, UITableViewDelegate, UITableViewDa
         self.present(alert, animated: true, completion: nil)
     }
     
-    /*
     // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?)
+    {
+        if segue.destination is FeedViewController
+        {
+            let vc = segue.destination as? FeedViewController
+            if let feed = sender as? Feed {
+                vc?.feed = feed
+            }
+        }
     }
-    */
-
 }
