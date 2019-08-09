@@ -16,6 +16,7 @@ struct K {
     struct APIParameterKey {
         static let username = "user"
         static let password = "password"
+        static let url = "url"
     }
     
     struct APIDrinksFilter {

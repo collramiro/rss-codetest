@@ -21,11 +21,31 @@ class HomeViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "Feeds"
+        
+        //test code
         if let user = DataManager.shared().user {
             print("LOGGED IN")
             print(user.authToken)
         }
         
+        //setup observer for successfully login/register
+        NotificationCenter.default.addObserver(self, selector: #selector(shouldReloadFeeds(_:)), name: .shouldReloadFeeds, object: nil)
+        
+        setupUI()
+        
+        reloadFeeds()
+    }
+    
+    private func setupUI() {
+        setupEmptyDataSet()
+    }
+    
+    @objc func shouldReloadFeeds(_ notification:Notification) {
+      reloadFeeds()
+    }
+    
+    // MARK: - Endpoint Connection
+    private func reloadFeeds() {
         APIClient.getFeeds { (result) in
             switch result {
             case .success(let feeds):
@@ -35,15 +55,8 @@ class HomeViewController: BaseViewController {
                 print(error.localizedDescription)
             }
         }
-        
-        setupUI()
     }
     
-    private func setupUI() {
-        setupEmptyDataSet()
-    }
-    
-    // MARK: - Endpoint Connection
     private func removeFeed(indexPath: IndexPath) {
         SVProgressHUD.show()
         
@@ -95,10 +108,6 @@ class HomeViewController: BaseViewController {
         let alert = UIAlertController(title: "More", message: nil, preferredStyle: .actionSheet)
         
         alert.addAction(UIAlertAction(title: "Add Feed", style: .default , handler:{ (UIAlertAction)in
-            self.performSegue(withIdentifier: "goToAddFeed", sender: self)
-        }))
-        
-        alert.addAction(UIAlertAction(title: "Edit Feeds", style: .default , handler:{ (UIAlertAction)in
             self.performSegue(withIdentifier: "goToAddFeed", sender: self)
         }))
         
@@ -225,4 +234,8 @@ extension HomeViewController : UITableViewDelegate, UITableViewDataSource, Empty
         
         self.editButton.isEnabled = true
     }
+}
+
+extension Notification.Name {
+    static let shouldReloadFeeds = Notification.Name("shouldReloadFeeds")
 }

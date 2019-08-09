@@ -31,6 +31,11 @@ class APIClient {
         performRequest(route: APIRouter.feeds, decoder: jsonDecoder, completion: completion)
     }
     
+    static func subscribeFeed(feedUrl: String, completion:@escaping (AFResult<Feed>)->Void) {
+        let jsonDecoder = JSONDecoder()
+        performRequest(route: APIRouter.subscribeFeed(feedUrl: feedUrl), decoder: jsonDecoder, completion: completion)
+    }
+    
     static func removeFeed(feedId: Int, completion:@escaping (AFResult<Bool>)->Void) {
         AF.request(APIRouter.removeFeed(feedId: feedId)).responseJSON { (response) in
             switch response.result {

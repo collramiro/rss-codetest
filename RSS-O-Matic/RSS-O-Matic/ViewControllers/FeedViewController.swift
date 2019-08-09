@@ -8,7 +8,7 @@
 
 import UIKit
 
-class FeedViewController: BaseViewController, UITableViewDelegate, UITableViewDataSource {
+class FeedViewController: BaseViewController {
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -31,6 +31,12 @@ class FeedViewController: BaseViewController, UITableViewDelegate, UITableViewDa
         }
     }
     
+    // MARK: - Button Delegates
+  
+}
+
+// MARK: - Tableview management
+extension FeedViewController : UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         var cell = tableView.dequeueReusableCell(withIdentifier: "cell") as UITableViewCell?
         
@@ -54,18 +60,4 @@ class FeedViewController: BaseViewController, UITableViewDelegate, UITableViewDa
         webView.modalPresentationStyle = .overCurrentContext
         self.present(webView, animated: false, completion: nil)
     }
-    
-    // MARK: - Button Delegates
-  
-    
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destination.
-     // Pass the selected object to the new view controller.
-     }
-     */
-    
 }
