@@ -63,6 +63,11 @@
                         <viewLayoutGuide key="safeArea" id="Sh2-mU-jOs"/>
                     </view>
                     <navigationItem key="navigationItem" id="uRO-ww-gCs">
+                        <barButtonItem key="leftBarButtonItem" title="Edit" id="r8K-0o-Uph">
+                            <connections>
+                                <action selector="onEditPressed:" destination="8jd-1H-9yv" id="hU6-Yq-pn4"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" image="moreButton" id="RhX-Ao-o13">
                             <connections>
                                 <action selector="onMoreOptionsPressed:" destination="8jd-1H-9yv" id="pgx-qt-CUi"/>
@@ -70,6 +75,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="editButton" destination="r8K-0o-Uph" id="LI2-Fq-2HN"/>
                         <outlet property="tableView" destination="U0b-RO-6F8" id="aI6-E3-bLp"/>
                         <segue destination="7xQ-ed-P1o" kind="show" identifier="goToAddFeed" id="PPt-Kz-zdu"/>
                         <segue destination="mCE-J5-jxD" kind="show" identifier="goToFeed" id="gwQ-2W-8eN"/>
@@ -208,6 +214,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="moreButton" width="21.333333969116211" height="21.333333969116211"/>
+        <image name="moreButton" width="18" height="5"/>
     </resources>
 </document>

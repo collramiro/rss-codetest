@@ -8,10 +8,12 @@
 
 import UIKit
 import SVProgressHUD
+import EmptyDataSet_Swift
 
 class HomeViewController: BaseViewController {
     
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var editButton: UIBarButtonItem!
     
     var feeds = [Feed]()
 
@@ -38,13 +40,7 @@ class HomeViewController: BaseViewController {
     }
     
     private func setupUI() {
-        let editButton = UIBarButtonItem(title: "Edit", style: .plain, target: self, action: #selector(toggleEditing)) // create a bat button
-        navigationItem.leftBarButtonItem = editButton // assign button
-    }
-    
-    @objc private func toggleEditing() {
-        tableView.setEditing(!tableView.isEditing, animated: true) // Set opposite value of current editing status
-        navigationItem.leftBarButtonItem?.title = tableView.isEditing ? "Done" : "Edit" // Set title depending on the editing status
+        setupEmptyDataSet()
     }
     
     // MARK: - Endpoint Connection
@@ -59,6 +55,7 @@ class HomeViewController: BaseViewController {
                 SVProgressHUD.dismiss()
                 self.feeds.remove(at: indexPath.row)
                 self.tableView.deleteRows(at: [indexPath], with: .fade)
+                self.tableView.reloadEmptyDataSet()
             case .failure(let error):
                 print(error.localizedDescription)
                 SVProgressHUD.dismiss()
@@ -117,6 +114,10 @@ class HomeViewController: BaseViewController {
         self.present(alert, animated: true, completion: nil)
     }
     
+    @IBAction func onEditPressed(_ sender: Any) {
+        toggleEditing()
+    }
+    
     // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?)
     {
@@ -130,8 +131,8 @@ class HomeViewController: BaseViewController {
     }
 }
 
-// MARK: - Tableview Management
-extension HomeViewController : UITableViewDelegate, UITableViewDataSource {
+// MARK: - Tableview/Empty dataset Management
+extension HomeViewController : UITableViewDelegate, UITableViewDataSource, EmptyDataSetSource, EmptyDataSetDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         var cell = tableView.dequeueReusableCell(withIdentifier: "cell") as UITableViewCell?
         
@@ -159,5 +160,69 @@ extension HomeViewController : UITableViewDelegate, UITableViewDataSource {
             // Delete the row from the data source
             removeFeed(indexPath: indexPath)
         }
+    }
+    
+    @objc private func toggleEditing() {
+        tableView.setEditing(!tableView.isEditing, animated: true) // Set opposite value of current editing status
+        editButton.title = tableView.isEditing ? "Done" : "Edit" // Set title depending on the editing status
+    }
+    
+    var emptyDataSetTitleString: NSAttributedString? {
+        var attributes: [NSAttributedString.Key: Any] = [:]
+        attributes[NSAttributedString.Key.font] = UIFont.systemFont(ofSize: 17.0, weight: .bold)
+        attributes[NSAttributedString.Key.foregroundColor] = UIColor.darkText
+        return NSAttributedString.init(string: "No feeds yet", attributes: attributes)
+    }
+    
+    var emptyDataSetDetailString: NSAttributedString? {
+        var attributes: [NSAttributedString.Key: Any] = [:]
+        attributes[NSAttributedString.Key.font] = UIFont.systemFont(ofSize: 17.0)
+        return NSAttributedString.init(string: "Subscribe to one of our RSS feeds to start receiving news.", attributes: attributes)
+    }
+    
+    var emptyDataSetButtonString: NSAttributedString? {
+        var attributes: [NSAttributedString.Key: Any] = [:]
+        
+        attributes[NSAttributedString.Key.font] = UIFont.systemFont(ofSize: 17.0)
+        attributes[NSAttributedString.Key.foregroundColor] = self.view.tintColor
+        return NSAttributedString.init(string: "Add Feed", attributes: attributes)
+    }
+    
+    func setupEmptyDataSet() {
+        //setup empty data set for tableview
+        tableView.tableFooterView = UIView(frame: .zero)
+        tableView.emptyDataSetSource = self
+        tableView.emptyDataSetDelegate = self
+
+        tableView.emptyDataSetView { view in
+            view.titleLabelString(self.emptyDataSetTitleString)
+                .detailLabelString(self.emptyDataSetDetailString)
+                .image(UIImage.init(named: "rssIcon"))
+                .buttonTitle(self.emptyDataSetButtonString, for: .normal)
+                .dataSetBackgroundColor(UIColor.white)
+                .verticalSpace(30)
+                .shouldFadeIn(true)
+                .isTouchAllowed(true)
+                .isScrollAllowed(true)
+                .didTapDataButton {
+                    self.performSegue(withIdentifier: "goToAddFeed", sender: nil)
+            }
+        }
+    }
+    
+    func emptyDataSetWillAppear(_ scrollView: UIScrollView) {
+        if tableView.isEditing {
+            toggleEditing()
+        }
+        
+        self.editButton.isEnabled = false
+    }
+    
+    func emptyDataSetDidDisappear(_ scrollView: UIScrollView) {
+        if tableView.isEditing {
+            toggleEditing()
+        }
+        
+        self.editButton.isEnabled = true
     }
 }

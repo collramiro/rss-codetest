@@ -11,5 +11,6 @@ target 'RSS-O-Matic' do
   pod 'SDWebImage', '~> 5.0'
   pod 'IHKeyboardAvoiding'
   pod 'SVProgressHUD'
+  pod 'EmptyDataSet-Swift', '~> 4.2.0'
 
 end
