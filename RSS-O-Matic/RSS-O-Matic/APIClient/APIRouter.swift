@@ -12,6 +12,7 @@ enum APIRouter: URLRequestConvertible {
     
     case login(username:String, password:String)
     case register(username:String, password:String)
+    case feeds
     case articles
     case article(id: Int)
     
@@ -20,7 +21,7 @@ enum APIRouter: URLRequestConvertible {
         switch self {
         case .login, .register:
             return .post
-        case .articles, .article:
+        case .feeds, .articles, .article:
             return .get
         }
     }
@@ -32,6 +33,8 @@ enum APIRouter: URLRequestConvertible {
             return "/users/login"
         case .register:
             return "/users/register"
+        case .feeds:
+            return "/feeds"
         case .articles:
             return "/articles/all.json"
         case .article(let id):
@@ -46,7 +49,7 @@ enum APIRouter: URLRequestConvertible {
             return [K.APIParameterKey.username: email, K.APIParameterKey.password: password]
         case .register(let email, let password):
             return [K.APIParameterKey.username: email, K.APIParameterKey.password: password]
-        case .articles, .article:
+        case .feeds, .articles, .article:
             return nil
         }
     }
@@ -59,6 +62,11 @@ enum APIRouter: URLRequestConvertible {
         
         // HTTP Method
         urlRequest.httpMethod = method.rawValue
+
+        // Auth
+        if let user = DataManager.shared().user {
+            urlRequest.setValue("Bearer \(user.authToken)", forHTTPHeaderField: HTTPHeaderField.authentication.rawValue)
+        }
         
         // Common Headers
         urlRequest.setValue(ContentType.json.rawValue, forHTTPHeaderField: HTTPHeaderField.acceptType.rawValue)

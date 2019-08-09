@@ -8,15 +8,51 @@
 
 import UIKit
 
-class HomeViewController: BaseViewController {
+class HomeViewController: BaseViewController, UITableViewDelegate, UITableViewDataSource {
+    
+    @IBOutlet weak var tableView: UITableView!
+    
+    var feeds = [Feed]()
 
     // MARK: - App Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.title = "Feeds"
         if let user = DataManager.shared().user {
             print("LOGGED IN")
             print(user.authToken)
         }
+        
+        APIClient.getFeeds { (result) in
+            switch result {
+            case .success(let feeds):
+                self.feeds = feeds
+                self.tableView.reloadData()
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        var cell = tableView.dequeueReusableCell(withIdentifier: "cell") as UITableViewCell?
+        
+        if cell == nil {
+            cell = UITableViewCell(style: .default, reuseIdentifier: "cell")
+        }
+        
+        cell!.textLabel?.text = feeds[indexPath.row].title
+        return cell!
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return feeds.count
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        
+        let feed = feeds[indexPath.row]
     }
     
     // MARK: - Logout
@@ -50,7 +86,7 @@ class HomeViewController: BaseViewController {
         let alert = UIAlertController(title: "More", message: nil, preferredStyle: .actionSheet)
         
         alert.addAction(UIAlertAction(title: "Add Feed", style: .default , handler:{ (UIAlertAction)in
-
+            self.performSegue(withIdentifier: "goToAddFeed", sender: self)
         }))
         
         alert.addAction(UIAlertAction(title: "Logout", style: .default , handler:{ (UIAlertAction)in

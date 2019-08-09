@@ -14,7 +14,7 @@
 		28F72FFA22FDC50D00E8B9F1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 28F72FF822FDC50D00E8B9F1 /* LaunchScreen.storyboard */; };
 		28F7300422FDC6F400E8B9F1 /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F7300222FDC6F400E8B9F1 /* APIClient.swift */; };
 		28F7300522FDC6F400E8B9F1 /* APIRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F7300322FDC6F400E8B9F1 /* APIRouter.swift */; };
-		28F7300922FDC70300E8B9F1 /* Drink.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F7300722FDC70300E8B9F1 /* Drink.swift */; };
+		28F7300922FDC70300E8B9F1 /* Feed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F7300722FDC70300E8B9F1 /* Feed.swift */; };
 		28F7300A22FDC70300E8B9F1 /* DrinkDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F7300822FDC70300E8B9F1 /* DrinkDetails.swift */; };
 		28F7301122FDC83100E8B9F1 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F7301022FDC83100E8B9F1 /* User.swift */; };
 		28F7301322FDD31200E8B9F1 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F7301222FDD31200E8B9F1 /* Constants.swift */; };
@@ -23,6 +23,8 @@
 		28F7302022FDEBA400E8B9F1 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F7301F22FDEBA400E8B9F1 /* HomeViewController.swift */; };
 		28F7302222FDED0400E8B9F1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 28F7302122FDED0400E8B9F1 /* Main.storyboard */; };
 		28F7302422FDF12F00E8B9F1 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F7302322FDF12F00E8B9F1 /* DataManager.swift */; };
+		28F7302722FDF8F900E8B9F1 /* AddFeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F7302622FDF8F900E8B9F1 /* AddFeedViewController.swift */; };
+		28F7302B22FE006300E8B9F1 /* FeedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F7302A22FE006300E8B9F1 /* FeedTableViewCell.swift */; };
 		2B2D8BC43A705CF19A74047A /* Pods_RSS_O_Matic.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AC2AD7849CDE6BF4C6FAD6E6 /* Pods_RSS_O_Matic.framework */; };
 /* End PBXBuildFile section */
 
@@ -36,7 +38,7 @@
 		28F72FFB22FDC50D00E8B9F1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		28F7300222FDC6F400E8B9F1 /* APIClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
 		28F7300322FDC6F400E8B9F1 /* APIRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIRouter.swift; sourceTree = "<group>"; };
-		28F7300722FDC70300E8B9F1 /* Drink.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Drink.swift; sourceTree = "<group>"; };
+		28F7300722FDC70300E8B9F1 /* Feed.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Feed.swift; sourceTree = "<group>"; };
 		28F7300822FDC70300E8B9F1 /* DrinkDetails.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DrinkDetails.swift; sourceTree = "<group>"; };
 		28F7301022FDC83100E8B9F1 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		28F7301222FDD31200E8B9F1 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -45,6 +47,8 @@
 		28F7301F22FDEBA400E8B9F1 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		28F7302122FDED0400E8B9F1 /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		28F7302322FDF12F00E8B9F1 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
+		28F7302622FDF8F900E8B9F1 /* AddFeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFeedViewController.swift; sourceTree = "<group>"; };
+		28F7302A22FE006300E8B9F1 /* FeedTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedTableViewCell.swift; sourceTree = "<group>"; };
 		3C13F80BB4CD71FC1A00F866 /* Pods-RSS-O-Matic.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RSS-O-Matic.debug.xcconfig"; path = "Target Support Files/Pods-RSS-O-Matic/Pods-RSS-O-Matic.debug.xcconfig"; sourceTree = "<group>"; };
 		AC2AD7849CDE6BF4C6FAD6E6 /* Pods_RSS_O_Matic.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RSS_O_Matic.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F052D2675122DF2577FF7032 /* Pods-RSS-O-Matic.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RSS-O-Matic.release.xcconfig"; path = "Target Support Files/Pods-RSS-O-Matic/Pods-RSS-O-Matic.release.xcconfig"; sourceTree = "<group>"; };
@@ -88,6 +92,7 @@
 				28F7302522FDF13400E8B9F1 /* Manager */,
 				28F7300B22FDC7C000E8B9F1 /* Application */,
 				28F7300C22FDC7C600E8B9F1 /* ViewControllers */,
+				28F7302822FE003900E8B9F1 /* Views */,
 				28F7300D22FDC7EB00E8B9F1 /* Storyboards */,
 				28F7301C22FDE62200E8B9F1 /* Utils */,
 				28F7300F22FDC80700E8B9F1 /* Resources */,
@@ -109,7 +114,7 @@
 			isa = PBXGroup;
 			children = (
 				28F7301022FDC83100E8B9F1 /* User.swift */,
-				28F7300722FDC70300E8B9F1 /* Drink.swift */,
+				28F7300722FDC70300E8B9F1 /* Feed.swift */,
 				28F7300822FDC70300E8B9F1 /* DrinkDetails.swift */,
 			);
 			path = Models;
@@ -130,6 +135,7 @@
 				28F72FF122FDC50C00E8B9F1 /* OnboardingViewController.swift */,
 				28F7301422FDD7D200E8B9F1 /* AuthViewController.swift */,
 				28F7301F22FDEBA400E8B9F1 /* HomeViewController.swift */,
+				28F7302622FDF8F900E8B9F1 /* AddFeedViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -174,6 +180,22 @@
 				28F7302322FDF12F00E8B9F1 /* DataManager.swift */,
 			);
 			path = Manager;
+			sourceTree = "<group>";
+		};
+		28F7302822FE003900E8B9F1 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				28F7302922FE004300E8B9F1 /* Cells */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		28F7302922FE004300E8B9F1 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				28F7302A22FE006300E8B9F1 /* FeedTableViewCell.swift */,
+			);
+			path = Cells;
 			sourceTree = "<group>";
 		};
 		59149E10806B64F25CED6088 /* Frameworks */ = {
@@ -316,7 +338,9 @@
 				28F7301522FDD7D200E8B9F1 /* AuthViewController.swift in Sources */,
 				28F72FF022FDC50C00E8B9F1 /* AppDelegate.swift in Sources */,
 				28F7300A22FDC70300E8B9F1 /* DrinkDetails.swift in Sources */,
-				28F7300922FDC70300E8B9F1 /* Drink.swift in Sources */,
+				28F7300922FDC70300E8B9F1 /* Feed.swift in Sources */,
+				28F7302722FDF8F900E8B9F1 /* AddFeedViewController.swift in Sources */,
+				28F7302B22FE006300E8B9F1 /* FeedTableViewCell.swift in Sources */,
 				28F7302022FDEBA400E8B9F1 /* HomeViewController.swift in Sources */,
 				28F7300422FDC6F400E8B9F1 /* APIClient.swift in Sources */,
 				28F7301122FDC83100E8B9F1 /* User.swift in Sources */,
